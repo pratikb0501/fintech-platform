@@ -35,4 +35,5 @@ public class UserController {
     public ResponseEntity<String> secureEndpoint() {
         return ResponseEntity.ok("You are authenticated!");
     }
+    
 }
