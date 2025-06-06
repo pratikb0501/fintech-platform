@@ -6,6 +6,8 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY userservice/pom.xml .
 
+RUN chmod +x mvnw
+
 RUN ./mvnw dependency:go-offline
 
 COPY userservice/src src
