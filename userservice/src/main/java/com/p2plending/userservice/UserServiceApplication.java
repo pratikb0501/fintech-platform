@@ -8,7 +8,7 @@ public class UserServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UserServiceApplication.class, args);
-        System.out.println("***********************************The system is running fine***************************************");
+        System.out.println("*********************************** User Service Applicatrion is running fine ***************************************");
     }
 
 }
