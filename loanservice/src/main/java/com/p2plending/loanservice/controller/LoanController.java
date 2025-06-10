@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Controller
-@RequestMapping("/api/v1/loans")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/loans")
 public class LoanController {
 
     private final LoanService loanService;
@@ -27,13 +27,13 @@ public class LoanController {
     }
 
     @GetMapping("/{id}")
-    public LoanResponse getLoanById(@PathVariable UUID id) {
+    public LoanResponse getLoanById(@PathVariable("id") UUID id) {
         Loan loan = loanService.getLoanById(id);
         return mapToResponse(loan);
     }
 
     @GetMapping("/user/{userId}")
-    public List<LoanResponse> getLoansByUserId(@PathVariable UUID userId) {
+    public List<LoanResponse> getLoansByUserId(@PathVariable("userId") UUID userId) {
         List<Loan> loans = loanService.getLoansByUserId(userId);
         return loans.stream()
                 .map(this::mapToResponse)
@@ -41,19 +41,19 @@ public class LoanController {
     }
 
     @PostMapping("/{id}/approve")
-    public LoanResponse approveLoan(@PathVariable UUID id) {
+    public LoanResponse approveLoan(@PathVariable("id") UUID id) {
         Loan loan = loanService.approveLoan(id);
         return mapToResponse(loan);
     }
 
     @PostMapping("/{id}/reject")
-    public LoanResponse rejectLoan(@PathVariable UUID id) {
+    public LoanResponse rejectLoan(@PathVariable("id") UUID id) {
         Loan loan = loanService.rejectLoan(id);
         return mapToResponse(loan);
     }
 
     @PostMapping("/{id}/pay")
-    public LoanResponse payLoan(@PathVariable UUID id) {
+    public LoanResponse payLoan(@PathVariable("id") UUID id) {
         Loan loan = loanService.payLoan(id);
         return mapToResponse(loan);
     }
