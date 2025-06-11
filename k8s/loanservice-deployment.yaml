@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loanservice-deployment
+  labels:
+    app: loanservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loanservice
+  template:
+    metadata:
+      labels:
+        app: loanservice
+    spec:
+      containers:
+        - name: loanservice
+          image: pratikbagm/loanservice:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://host.docker.internal:5432/postgres
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root
