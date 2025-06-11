@@ -10,7 +10,7 @@ RUN chmod +x mvnw
 
 RUN ./mvnw dependency:go-offline
 
-COPY laonservice/src src
+COPY loanservice/src src
 
 RUN ./mvnw clean package -DskipTests
 
