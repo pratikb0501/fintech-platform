@@ -3,13 +3,11 @@ FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /app
 
-COPY loanservice/mvnw .
-COPY loanservice/.mvn .mvn
-COPY loanservice/pom.xml .
+COPY . .
 
 RUN chmod +x mvnw
 
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw -pl loanservice dependency:go-offline
 
 COPY loanservice/src src
 
