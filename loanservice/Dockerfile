@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY mvnw .
 COPY .mvn .mvn
-COPY laonservice/pom.xml .
+COPY loanservice/pom.xml .
 
 RUN chmod +x mvnw
 
