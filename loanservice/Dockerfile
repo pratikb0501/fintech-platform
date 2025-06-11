@@ -13,13 +13,13 @@ RUN ./mvnw dependency:go-offline
 
 COPY loanservice/src src
 
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw -pl loanservice -am clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/loanservice/target/*.jar app.jar
 
 EXPOSE 8082
 
