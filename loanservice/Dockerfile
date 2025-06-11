@@ -1,9 +1,10 @@
+
 FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /app
 
-COPY mvnw .
-COPY .mvn .mvn
+COPY loanservice/mvnw .
+COPY loanservice/.mvn .mvn
 COPY loanservice/pom.xml .
 
 RUN chmod +x mvnw
@@ -15,10 +16,10 @@ COPY loanservice/src src
 RUN ./mvnw clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-jammy
-
 WORKDIR /app
 
-COPY --from=build /app/loanservice/target/*.jar app.jar
+
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8082
 
