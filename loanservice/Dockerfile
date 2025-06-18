@@ -1,23 +1,27 @@
-
+# Stage 1: Build
 FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /app
 
+# Copy everything for Maven context
 COPY . .
 
+# Grant permission to mvnw
 RUN chmod +x mvnw
 
-RUN ./mvnw -pl loanservice dependency:go-offline
+# Download dependencies
+RUN ./mvnw dependency:go-offline
 
-COPY loanservice/src src
+# Build the fat JAR
+RUN ./mvnw clean package -DskipTests
 
-RUN ./mvnw -pl loanservice -am clean package -DskipTests
-
+# Stage 2: Run
 FROM eclipse-temurin:17-jre-jammy
+
 WORKDIR /app
 
-
-COPY --from=build /app/loanservice/target/*.jar app.jar
+# Copy fat JAR
+COPY --from=build /app/loanservice/target/loanservice-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8082
 
