@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.p2plending.userservice.service.RegistrationService;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
     private final RegistrationService registrationService;
