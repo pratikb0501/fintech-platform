@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lending-platform-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /api/v1/users
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice-service
+                port:
+                  number: 8081
+          - path: /api/v1/loans
+            pathType: Prefix
+            backend:
+              service:
+                name: loanservice-service
+                port:
+                  number: 8082

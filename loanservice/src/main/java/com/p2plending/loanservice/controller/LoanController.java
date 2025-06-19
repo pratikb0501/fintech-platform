@@ -20,7 +20,7 @@ public class LoanController {
 
     private final LoanService loanService;
 
-    @PostMapping
+    @PostMapping("/create")
     public LoanResponse createLoan(@Valid @RequestBody LoanRequest loanRequest) {
         Loan loan = loanService.createLoan(loanRequest);
         return mapToResponse(loan);
