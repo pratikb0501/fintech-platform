@@ -12,11 +12,12 @@
     <modules>
         <module>userservice</module>
         <module>loanservice</module>
+        <module>investmentservice</module>
     </modules>
 
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>3.2.5</spring.boot.version> <!-- use your actual Spring Boot version -->
+        <spring.boot.version>3.2.5</spring.boot.version>
     </properties>
 
     <dependencyManagement>
