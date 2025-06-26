@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: investmentservice-deployment
+  labels:
+    app: investmentservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: investmentservice
+  template:
+    metadata:
+      labels:
+        app: investmentservice
+    spec:
+      containers:
+        - name: investmentservice
+          image: pratikbagm/investmentservice:latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-service:5432/p2p_loandb
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
