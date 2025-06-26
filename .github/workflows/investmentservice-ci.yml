@@ -1,4 +1,4 @@
-name: CI/CD - LoanService
+name: CI/CD - InvestmentService
 
 on:
   push:
