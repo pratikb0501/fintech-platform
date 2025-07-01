@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lending-platform-ingress
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /api/v1/users
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-user-service
+                port:
+                  number: 8081
+          - path: /api/v1/loans
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-loan-service
+                port:
+                  number: 8082
+          - path: /api/v1/investments
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-investment-service
+                port:
+                  number: 8083

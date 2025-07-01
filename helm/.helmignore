@@ -1,0 +1,10 @@
+*.tgz
+*.tar.gz
+*.zip
+*.jar
+*.class
+classes.jsa
+target/
+.idea/
+.vscode/
+.DS_Store

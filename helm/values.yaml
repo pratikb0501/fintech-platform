@@ -1,0 +1,50 @@
+userservice:
+  image:
+    repository: pratikbagm/userservice
+    tag: latest
+  service:
+    port: 8081
+  env:
+    SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/p2p_loandb
+    SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+loanservice:
+  image:
+    repository: pratikbagm/loanservice
+    tag: latest
+  service:
+    port: 8082
+  env:
+    SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/p2p_loandb
+    SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+investmentservice:
+  image:
+    repository: pratikbagm/investmentservice
+    tag: latest
+  service:
+    port: 8083
+  env:
+    SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/p2p_loandb
+    SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+postgres:
+  env:
+    POSTGRES_DB: p2p_loandb
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: Pratik@123
+  persistence:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storage: 1Gi
+
+ingress:
+  name: lending-platform-ingress
+  host: localhost
+  annotations: {}
+  userServiceName: userservice-service
+  userServicePort: 8081
+  loanServiceName: loanservice-service
+  loanServicePort: 8082
+  investmentServiceName: investmentservice-service
+  investmentServicePort: 8083

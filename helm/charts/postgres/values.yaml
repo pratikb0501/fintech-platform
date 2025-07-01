@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: postgres
+  tag: "15"
+  pullPolicy: IfNotPresent
+
+env:
+  POSTGRES_DB: p2p_loandb
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  storage: 1Gi
+
+secretName: postgres-secret

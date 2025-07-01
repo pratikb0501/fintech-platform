@@ -1,0 +1,15 @@
+dependencies:
+- name: userservice
+  repository: file://charts/userservice
+  version: 0.1.0
+- name: loanservice
+  repository: file://charts/loanservice
+  version: 0.1.0
+- name: investmentservice
+  repository: file://charts/investmentservice
+  version: 0.1.0
+- name: postgres
+  repository: file://charts/postgres
+  version: 0.1.0
+digest: sha256:37a4a0254076899c3981655102e32fe68c94db2a3e9f8c79407e32bc17488732
+generated: "2025-07-01T00:24:31.2441694-07:00"
