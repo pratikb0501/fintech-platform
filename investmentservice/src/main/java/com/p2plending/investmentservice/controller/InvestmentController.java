@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class InvestmentController {
     private final InvestmentService investmentService;
 
-    @PostMapping
+    @PostMapping("/create")
     public InvestmentResponse create(@RequestBody InvestmentRequest request) {
         Investment investment = investmentService.createInvestment(request);
         return toResponse(investment);

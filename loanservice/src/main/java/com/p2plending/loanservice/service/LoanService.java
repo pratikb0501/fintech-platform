@@ -19,5 +19,7 @@ public interface LoanService {
 
     Loan rejectLoan(UUID loanId);
 
+    Loan fundLoan(UUID loanId);
+
     Loan payLoan(UUID loanId);
 }

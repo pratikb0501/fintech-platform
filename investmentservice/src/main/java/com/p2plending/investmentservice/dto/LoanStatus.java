@@ -1,4 +1,4 @@
-package com.p2plending.loanservice.model;
+package com.p2plending.investmentservice.dto;
 
 public enum LoanStatus {
     PENDING,

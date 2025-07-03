@@ -52,6 +52,13 @@ public class LoanController {
         return mapToResponse(loan);
     }
 
+    @PostMapping("/{id}/fund")
+    public LoanResponse fundLoan(@PathVariable("id") UUID id) {
+        Loan loan = loanService.fundLoan(id);
+        return mapToResponse(loan);
+    }
+
+
     @PostMapping("/{id}/pay")
     public LoanResponse payLoan(@PathVariable("id") UUID id) {
         Loan loan = loanService.payLoan(id);
